@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { createClient } from '@/lib/supabase/client'
 import { createProductSchema } from '@/lib/validations'
 import { toast } from 'sonner'
-import { Upload, Sparkles, Loader2, Image as ImageIcon, X, Package } from 'lucide-react'
+import { Upload, Sparkles, Loader2, Image as ImageIcon, X, Package, Camera } from 'lucide-react'
 
 const GENDERS = ['MEN', 'WOMEN', 'KIDS', 'UNISEX']
 const FITS = ['SLIM', 'REGULAR', 'LOOSE', 'OVERSIZED']
@@ -27,6 +27,7 @@ export default function NewProductPage() {
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [imagePreview, setImagePreview] = useState<string>('')
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const cameraInputRef = useRef<HTMLInputElement>(null)
 
   const [form, setForm] = useState({
     name: '',
@@ -252,7 +253,21 @@ export default function NewProductPage() {
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-6 animate-fade-in-up">
+    <div className="p-6 max-w-4xl mx-auto space-y-6 animate-fade-in-up relative">
+      {analyzing && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm rounded-xl">
+          <div className="flex flex-col items-center space-y-4 p-6 bg-card rounded-xl shadow-xl border border-border">
+            <Loader2 className="h-10 w-10 animate-spin text-primary" />
+            <div className="text-center">
+              <h3 className="font-semibold text-lg">AI is analyzing...</h3>
+              <p className="text-sm text-muted-foreground">Extracting product details from image</p>
+            </div>
+            <div className="w-48 h-1.5 bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-primary animate-pulse rounded-full w-full" />
+            </div>
+          </div>
+        </div>
+      )}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold">Add New Product</h1>
       </div>
@@ -266,25 +281,52 @@ export default function NewProductPage() {
             </CardHeader>
             <CardContent>
               <input
+                id="gallery-upload"
                 type="file"
                 accept="image/*"
                 className="hidden"
-                ref={fileInputRef}
+                onChange={handleImageSelect}
+              />
+              <input
+                id="camera-upload"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className="hidden"
                 onChange={handleImageSelect}
               />
               <div 
-                onClick={() => fileInputRef.current?.click()}
-                className={`aspect-[3/4] rounded-lg border-2 border-dashed flex flex-col items-center justify-center cursor-pointer transition-colors overflow-hidden ${
-                  imagePreview ? 'border-primary' : 'border-border hover:border-primary hover:bg-primary/5'
+                className={`aspect-[3/4] rounded-lg border-2 border-dashed flex flex-col items-center justify-center transition-colors overflow-hidden ${
+                  imagePreview ? 'border-primary cursor-pointer' : 'border-border hover:border-primary hover:bg-primary/5'
                 }`}
+                onClick={() => {
+                  if (imagePreview) document.getElementById('gallery-upload')?.click()
+                }}
               >
                 {imagePreview ? (
                   <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${imagePreview})` }} />
                 ) : (
                   <div className="text-center p-4">
-                    <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm font-medium">Click to upload photo</p>
-                    <p className="text-xs text-muted-foreground">JPEG, PNG up to 5MB</p>
+                    <ImageIcon className="h-8 w-8 text-muted-foreground mx-auto mb-4" />
+                    <div className="flex flex-col gap-2">
+                      <label 
+                        htmlFor="camera-upload"
+                        className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-8 px-3 cursor-pointer"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <Camera className="h-4 w-4 mr-2" />
+                        Take Photo
+                      </label>
+                      <label 
+                        htmlFor="gallery-upload"
+                        className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3 cursor-pointer"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <Upload className="h-4 w-4 mr-2" />
+                        Upload Gallery
+                      </label>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-4">JPEG, PNG up to 5MB</p>
                   </div>
                 )}
               </div>

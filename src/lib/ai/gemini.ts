@@ -7,7 +7,7 @@ import type { AIProvider, ProductAnalysis, ImageGenerationResult } from './servi
 
 export class GeminiProvider implements AIProvider {
   private genAI: GoogleGenerativeAI
-  private modelName: string = 'gemini-2.0-flash'
+  private modelName: string = 'gemini-3.6-flash'
 
   constructor() {
     const apiKey = process.env.GEMINI_API_KEY
@@ -40,7 +40,7 @@ Respond in this exact JSON format:
   "title": "A concise, attractive product title (e.g., 'Black Oversized Cotton Shirt')",
   "description": "A detailed 2-3 sentence product description highlighting features, style, and appeal",
   "short_description": "A single line summary under 80 characters",
-  "category": "One of: Shirts, T-Shirts, Jeans, Kurtis, Dresses, Sarees, Jackets, Footwear, Trousers, or null if unclear",
+  "category": "One of: Shirts, T-Shirts, Jeans, Kurtis, Dresses, Sarees, Jackets, Footwear, Trousers, Others, or null if unclear",
   "tags": ["array", "of", "relevant", "searchable", "tags"],
   "color": "Primary color or color combination, or null",
   "material": "Fabric/material if identifiable (e.g., Cotton, Polyester, Silk), or null",
@@ -104,7 +104,7 @@ Return ONLY valid JSON, no markdown formatting.`
     try {
       // Attempt to use Gemini's image generation capabilities
       // This uses the multimodal model to generate an enhanced product image
-      const model = this.genAI.getGenerativeModel({ model: 'gemini-2.0-flash' })
+      const model = this.genAI.getGenerativeModel({ model: 'gemini-3.6-flash' })
 
       const prompt = `You are a professional fashion photographer. 
 Analyze this product image and describe how it would look in a professional e-commerce product photo.
