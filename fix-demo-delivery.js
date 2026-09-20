@@ -11,7 +11,7 @@ async function fix() {
   const { data: profile } = await supabase
     .from('profiles')
     .select('id, full_name, email')
-    .eq('email', 'demo.delivery@vastranow.com')
+    .eq('email', 'demo.delivery@clothrush.com')
     .single();
 
   if (profile) {

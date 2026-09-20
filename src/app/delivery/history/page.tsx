@@ -17,10 +17,21 @@ export default function DeliveryHistoryPage() {
         const { data: { user } } = await supabase.auth.getUser()
         if (!user) return
 
+        const { data: partner } = await supabase
+          .from('delivery_partners')
+          .select('id')
+          .eq('user_id', user.id)
+          .single()
+
+        if (!partner) {
+          setLoading(false)
+          return
+        }
+
         const { data } = await supabase
           .from('orders')
           .select('*, stores(name, address), profiles(full_name, phone)')
-          .eq('delivery_partner_id', user.id)
+          .eq('delivery_partner_id', partner.id)
           .eq('status', 'DELIVERED')
           .order('updated_at', { ascending: false })
           .limit(20)

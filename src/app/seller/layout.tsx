@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Store, Package, ShoppingBag, Settings, LogOut } from 'lucide-react'
 
@@ -13,6 +15,13 @@ export default function SellerLayout({
 }: {
   children: React.ReactNode
 }) {
+  const handleLogout = async () => {
+    const { createClient } = await import('@/lib/supabase/client')
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    window.location.href = '/login'
+  }
+
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-muted/30">
       {/* Desktop Sidebar */}
@@ -36,10 +45,10 @@ export default function SellerLayout({
           ))}
         </nav>
         <div className="p-4 border-t border-border">
-          <Link href="/login" className="flex items-center gap-3 px-3 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-colors">
+          <button onClick={handleLogout} className="flex w-full items-center gap-3 px-3 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-colors">
             <LogOut className="h-5 w-5" />
             <span className="font-medium">Logout</span>
-          </Link>
+          </button>
         </div>
       </aside>
 
@@ -51,6 +60,9 @@ export default function SellerLayout({
           </span>
           <span className="text-sm font-medium bg-primary/10 text-primary px-2 py-0.5 rounded">Seller</span>
         </Link>
+        <button onClick={handleLogout} className="text-sm text-muted-foreground hover:text-foreground">
+          Logout
+        </button>
       </header>
 
       {/* Main Content */}

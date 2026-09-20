@@ -14,10 +14,10 @@ import { toast } from 'sonner'
 import { Loader2 } from 'lucide-react'
 
 const DEMO_ACCOUNTS = [
-  { label: 'Customer', email: 'demo.customer@vastranow.local', role: 'CUSTOMER' },
-  { label: 'Seller', email: 'demo.seller@vastranow.local', role: 'SELLER' },
-  { label: 'Admin', email: 'demo.admin@vastranow.local', role: 'ADMIN' },
-  { label: 'Delivery', email: 'demo.delivery@vastranow.local', role: 'DELIVERY_PARTNER' },
+  { label: 'Customer', email: 'demo.customer@clothrush.com', role: 'CUSTOMER' },
+  { label: 'Seller', email: 'demo.seller@clothrush.com', role: 'SELLER' },
+  { label: 'Admin', email: 'demo.admin@clothrush.com', role: 'ADMIN' },
+  { label: 'Delivery', email: 'demo.delivery@clothrush.com', role: 'DELIVERY_PARTNER' },
 ]
 
 function LoginContent() {

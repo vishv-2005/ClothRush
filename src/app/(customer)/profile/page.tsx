@@ -117,9 +117,11 @@ export default function CustomerProfile() {
               <label className="text-sm font-medium text-muted-foreground">Role</label>
               <Input value={profile.role} readOnly className="mt-1 bg-zinc-50 dark:bg-zinc-900" />
             </div>
-            <Button className="w-full mt-4" variant="outline" onClick={() => toast.success('Profile edit coming soon!')}>
-              Edit Profile
-            </Button>
+            <Link href="/profile/edit" className="block w-full mt-4">
+              <Button className="w-full" variant="outline">
+                Edit Profile
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 

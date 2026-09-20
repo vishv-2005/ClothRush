@@ -18,10 +18,10 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 });
 
 const users = [
-  { email: 'demo.customer@vastranow.com', full_name: 'Demo Customer', role: 'CUSTOMER' },
-  { email: 'demo.seller@vastranow.com', full_name: 'Demo Seller', role: 'SELLER' },
-  { email: 'demo.delivery@vastranow.com', full_name: 'Demo Delivery', role: 'DELIVERY_PARTNER' },
-  { email: 'demo.admin@vastranow.com', full_name: 'Demo Admin', role: 'ADMIN' },
+  { email: 'demo.customer@clothrush.com', full_name: 'Demo Customer', role: 'CUSTOMER' },
+  { email: 'demo.seller@clothrush.com', full_name: 'Demo Seller', role: 'SELLER' },
+  { email: 'demo.delivery@clothrush.com', full_name: 'Demo Delivery', role: 'DELIVERY_PARTNER' },
+  { email: 'demo.admin@clothrush.com', full_name: 'Demo Admin', role: 'ADMIN' },
 ];
 
 async function seed() {

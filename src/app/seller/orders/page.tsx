@@ -179,7 +179,7 @@ export default function SellerOrdersPage() {
                   )}
                   
                   {/* View Details button is always available */}
-                  <Link href={`/orders/${order.id}`}>
+                  <Link href={`/seller/orders/${order.id}`}>
                     <Button variant="outline" size="sm">
                       <Eye className="h-4 w-4 mr-1" /> View
                     </Button>
