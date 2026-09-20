@@ -77,14 +77,25 @@ export default function CustomerProfile() {
     )
   }
 
+  const handleLogout = async () => {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    window.location.href = '/login'
+  }
+
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-8 animate-fade-in-up pb-24">
-      <div>
-        <h1 className="text-3xl font-bold flex items-center gap-2">
-          <User className="h-8 w-8 text-primary" />
-          My Profile
-        </h1>
-        <p className="text-muted-foreground mt-2">Manage your account, addresses, and view recent orders.</p>
+      <div className="flex justify-between items-start">
+        <div>
+          <h1 className="text-3xl font-bold flex items-center gap-2">
+            <User className="h-8 w-8 text-primary" />
+            My Profile
+          </h1>
+          <p className="text-muted-foreground mt-2">Manage your account, addresses, and view recent orders.</p>
+        </div>
+        <Button variant="outline" className="text-destructive border-destructive hover:bg-destructive/10" onClick={handleLogout}>
+          Logout
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
