@@ -22,7 +22,7 @@ export default function AdminLayout({
         <div className="p-6 border-b border-border">
           <Link href="/admin" className="flex items-center gap-2">
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-brand-light bg-clip-text text-transparent">
-              VastraNow
+              ClothRush
             </span>
             <span className="text-[10px] font-bold bg-red-100 text-red-700 px-1.5 py-0.5 rounded uppercase tracking-wider">Admin</span>
           </Link>
@@ -49,7 +49,7 @@ export default function AdminLayout({
       <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-card">
         <Link href="/admin" className="flex items-center gap-2">
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-brand-light bg-clip-text text-transparent">
-            VastraNow
+            ClothRush
           </span>
           <span className="text-[10px] font-bold bg-red-100 text-red-700 px-1.5 py-0.5 rounded uppercase tracking-wider">Admin</span>
         </Link>

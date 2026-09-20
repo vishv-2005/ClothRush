@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "VastraNow — Local Fashion. Delivered Fast.",
+  title: "ClothRush — Local Fashion. Delivered Fast.",
   description:
     "Discover trendy clothing from local stores near you and get it delivered in 15-20 minutes. Shop shirts, kurtis, dresses, jeans and more from your neighborhood fashion stores.",
   keywords: [

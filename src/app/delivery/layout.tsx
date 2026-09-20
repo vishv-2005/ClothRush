@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Bike, Package, Settings, LogOut } from 'lucide-react'
 
@@ -12,20 +14,25 @@ export default function DeliveryLayout({
 }: {
   children: React.ReactNode
 }) {
+  const handleLogout = async () => {
+    const { createClient } = await import('@/lib/supabase/client')
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    window.location.href = '/login'
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-muted/30">
       {/* Topbar */}
       <header className="sticky top-0 z-40 bg-card border-b border-border shadow-sm">
         <div className="container mx-auto px-4 h-14 flex items-center justify-between">
           <Link href="/delivery" className="flex items-center gap-2">
-            <span className="text-xl font-bold text-delivery">VastraNow</span>
+            <span className="text-xl font-bold text-delivery">ClothRush</span>
             <span className="text-xs font-bold bg-delivery/10 text-delivery px-1.5 py-0.5 rounded uppercase">Rider</span>
           </Link>
-          <Link href="/login">
-            <button className="text-sm text-muted-foreground hover:text-foreground">
-              Logout
-            </button>
-          </Link>
+          <button onClick={handleLogout} className="text-sm text-muted-foreground hover:text-foreground">
+            Logout
+          </button>
         </div>
       </header>
 

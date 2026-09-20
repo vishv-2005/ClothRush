@@ -20,7 +20,7 @@ export default function SellerLayout({
         <div className="p-6 border-b border-border">
           <Link href="/seller" className="flex items-center gap-2">
             <span className="text-xl font-bold bg-gradient-to-r from-primary to-brand-light bg-clip-text text-transparent">
-              VastraNow
+              ClothRush
             </span>
             <span className="text-sm font-medium bg-primary/10 text-primary px-2 py-0.5 rounded">Seller</span>
           </Link>
@@ -47,7 +47,7 @@ export default function SellerLayout({
       <header className="md:hidden flex items-center justify-between p-4 border-b border-border bg-card">
         <Link href="/seller" className="flex items-center gap-2">
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-brand-light bg-clip-text text-transparent">
-            VastraNow
+            ClothRush
           </span>
           <span className="text-sm font-medium bg-primary/10 text-primary px-2 py-0.5 rounded">Seller</span>
         </Link>

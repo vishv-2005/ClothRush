@@ -2,7 +2,7 @@
 // VastraNow Application Constants
 // ==========================================
 
-export const APP_NAME = 'VastraNow'
+export const APP_NAME = 'ClothRush'
 export const APP_TAGLINE = 'Local Fashion. Delivered Fast.'
 
 // ==========================================

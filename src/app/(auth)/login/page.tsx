@@ -115,15 +115,16 @@ function LoginContent() {
       <div className="w-full max-w-md animate-fade-in-up">
         {/* Brand */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block">
-            <h1 className="text-3xl font-bold">
-              <span className="bg-gradient-to-r from-primary to-brand-light bg-clip-text text-transparent">
-                Vastra
-              </span>
-              <span className="text-brand-accent-dark">Now</span>
-            </h1>
+          <Link href="/" className="flex items-center justify-center gap-1 group">
+            <span className="text-3xl font-black bg-gradient-to-br from-primary via-primary to-brand-light bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+              Cloth
+            </span>
+            <span className="text-3xl font-black text-brand-accent-dark">Rush</span>
           </Link>
-          <p className="text-sm text-muted-foreground mt-1">Local Fashion. Delivered Fast.</p>
+          <h1 className="text-2xl font-bold tracking-tight mt-6">Welcome Back</h1>
+          <p className="text-sm text-muted-foreground mt-2">
+            Enter your credentials to access your ClothRush account
+          </p>
         </div>
 
         <Card className="border-border/50 shadow-xl">

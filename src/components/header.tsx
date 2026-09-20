@@ -78,9 +78,9 @@ export function Header() {
 
             <Link href="/" className="flex items-center gap-1">
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-brand-light bg-clip-text text-transparent">
-                Vastra
+                Cloth
               </span>
-              <span className="text-xl font-bold text-brand-accent-dark">Now</span>
+              <span className="text-xl font-bold text-brand-accent-dark">Rush</span>
             </Link>
 
             <div className="hidden sm:flex items-center gap-1 text-sm text-muted-foreground ml-3">
