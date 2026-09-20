@@ -6,7 +6,7 @@ import { MapPin, Zap, ShoppingBag } from 'lucide-react'
 import { APP_NAME } from '@/lib/constants'
 
 export default async function Home() {
-  const supabase = createClient()
+  const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
   // If user is logged in, redirect them to their specific dashboard
